@@ -192,11 +192,6 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .lp-table-card th:last-child { border-left: 1px solid var(--line); }
 .lp-table-card tbody tr + tr td { border-top: 1px solid var(--line); }
 
-/* Next */
-.lp-next { list-style: none; padding: 0; border-top: 1px solid var(--line-strong); }
-.lp-next li { display: flex; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); line-height: 1.55; }
-.lp-arrow { color: var(--blue); font-family: var(--mono); flex: none; }
-
 /* Footer */
 .lp-footer { background: var(--navy); color: var(--bg); padding: clamp(56px, 8vw, 96px) 0 40px; }
 .lp-footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }

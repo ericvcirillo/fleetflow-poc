@@ -18,17 +18,16 @@ export const pains = [
 ]
 
 export const criteria = [
-  { t: 'Tenant isolation', d: 'The same dashboard shows each customer only its own rows, driven by the login.', done: true },
-  { t: 'Operational dashboard', d: 'Late rate, cost per kg, transit time and carrier ranking, with filters.', done: true },
-  { t: 'Embedded in the product', d: 'Running inside a React app styled as FleetFlow.', done: true },
-  { t: 'One actionable insight', d: 'Found in the data, not assumed upfront.', done: true },
-  { t: 'Executive dashboard', d: 'MRR, churn and adoption across all tenants, for FleetFlow leadership.', done: false },
+  { t: 'Tenant isolation', d: 'The same dashboard shows each customer only its own rows, driven by the login.' },
+  { t: 'Operational dashboard', d: 'Late rate, cost per kg, transit time and carrier ranking, with filters.' },
+  { t: 'Embedded in the product', d: 'Running inside a React app styled as FleetFlow.' },
+  { t: 'One actionable insight', d: 'Found in the data, not assumed upfront.' },
 ]
 
 export const steps = [
   {
     n: '01', t: 'Discovery',
-    did: 'Wrote a one-page discovery summary: the company, the pain, four personas and five success criteria, agreed before building anything.',
+    did: 'Wrote a one-page discovery summary: the company, the pain, four personas and four success criteria, agreed before building anything.',
     concept: 'Success criteria first. A PoC without them never ends.',
     call: 'I skipped the role-play and let AI invent the customer answers. I wanted my time on the technical part.',
   },
@@ -121,10 +120,4 @@ export const sisense = [
   { here: 'fact_shipments view, recalculated on every query', there: 'Live model, which queries the database directly (an ElastiCube would import the data instead)' },
   { here: 'kpi_carrier_month: additive measures', there: 'Measures that re-aggregate correctly under any filter' },
   { here: 'React app calling the database through Supabase', there: 'Compose SDK components embedded in the customer\'s React app' },
-]
-
-export const next = [
-  'Executive dashboard for FleetFlow: MRR, churn and adoption, with an admin role that sees every tenant.',
-  'Rebuild the dashboard with the Sisense Compose SDK on the same data.',
-  'Single sign-on from the host app instead of demo accounts.',
 ]

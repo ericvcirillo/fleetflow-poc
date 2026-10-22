@@ -1,4 +1,4 @@
-import { ai, carriers, criteria, decisions, links, next, pains, sisense, steps, why } from './content.js'
+import { ai, carriers, criteria, decisions, links, pains, sisense, steps, why } from './content.js'
 import './landing.css'
 
 const BAR_MAX = 45
@@ -70,7 +70,6 @@ export default function Landing() {
             <div><dt>tenants</dt><dd>40</dd></div>
             <div><dt>shipments</dt><dd>1,558</dd></div>
             <div><dt>tables</dt><dd>6</dd></div>
-            <div><dt>success criteria met</dt><dd>4 <span>of 5</span></dd></div>
           </dl>
         </section>
 
@@ -107,14 +106,14 @@ export default function Landing() {
               <div className="lp-split lp-criteria-block">
                 <div className="lp-split-left">
                   <h3 className="lp-h3">PoC success criteria</h3>
-                  <p className="lp-mono-sub">Agreed before building · 4 of 5 met</p>
+                  <p className="lp-mono-sub">Agreed before building · all met</p>
                 </div>
                 <ul className="lp-split-right lp-criteria">
                   {criteria.map(c => (
                     <li key={c.t}>
-                      <span className={`lp-status ${c.done ? 'met' : ''}`}>
-                        <span aria-hidden="true">{c.done ? '✓' : '○'}</span>
-                        {c.done ? 'Met' : 'Next'}
+                      <span className="lp-status met">
+                        <span aria-hidden="true">✓</span>
+                        Met
                       </span>
                       <span>
                         <strong>{c.t}.</strong> <span className="lp-muted">{c.d}</span>
@@ -238,6 +237,7 @@ export default function Landing() {
         <Section
           id="sisense"
           eyebrow="08 — Translation"
+          last
           title="How this maps to Sisense"
           wide={
             <div className="lp-table-card">
@@ -261,19 +261,6 @@ export default function Landing() {
           }
         />
 
-        <Section id="next" eyebrow="09 — Roadmap" title="What is next" last>
-          <ol className="lp-next">
-            {next.map(x => {
-              const [lead, rest] = splitLead(x)
-              return (
-                <li key={x}>
-                  <span className="lp-arrow" aria-hidden="true">→</span>
-                  <span><strong>{lead}</strong> <span className="lp-muted">{rest}</span></span>
-                </li>
-              )
-            })}
-          </ol>
-        </Section>
       </main>
 
       <footer className="lp-footer">
@@ -324,11 +311,4 @@ function Section({ id, eyebrow, title, aside, wide, children, last }) {
 function withCode(text) {
   const m = text.match(/^(fact_shipments|kpi_carrier_month)(.*)$/)
   return m ? <><code>{m[1]}</code>{m[2]}</> : text
-}
-
-function splitLead(text) {
-  const i = text.indexOf(': ')
-  if (i > -1) return [text.slice(0, i + 1), text.slice(i + 2)]
-  const j = text.search(/ (on the|instead of) /)
-  return j > -1 ? [text.slice(0, j), text.slice(j + 1)] : [text, '']
 }
