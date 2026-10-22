@@ -40,17 +40,20 @@ export function byMonth(rows, allMonths) {
   return [...groups.entries()].map(([month, rs]) => ({ month, ...summarize(rs) }))
 }
 
-// Every month between the first and last one in the data, so empty months show as gaps.
-export function monthRange(rows) {
+// The months on the trend axis: from January of the first year in the data
+// to the last month with data, narrowed to one year when a year is picked.
+// Months with no shipments stay on the axis and show as gaps.
+export function monthRange(rows, period = 'all') {
   const keys = rows.map(r => r.month.slice(0, 7)).sort()
   if (!keys.length) return []
-  const out = []
-  let [y, m] = keys[0].split('-').map(Number)
   const last = keys[keys.length - 1]
+  let y = period === 'all' ? Number(keys[0].slice(0, 4)) : Number(period)
+  let m = 1
+  const out = []
   for (;;) {
     const key = `${y}-${String(m).padStart(2, '0')}`
+    if (key > last || (period !== 'all' && y > Number(period))) return out
     out.push(key)
-    if (key >= last) return out
     m === 12 ? ((y += 1), (m = 1)) : (m += 1)
   }
 }

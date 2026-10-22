@@ -14,6 +14,7 @@ export default function App() {
   if (!user) return <Login onSignIn={setUser} />
   return (
     <Dashboard
+      key={user.email}
       user={user}
       onSignOut={async () => {
         await signOut()

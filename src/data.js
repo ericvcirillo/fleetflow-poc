@@ -57,10 +57,9 @@ export async function loadDashboard(user) {
     supabase.from('kpi_carrier_month').select('*'),
     supabase
       .from('shipments')
-      .select('shipment_id, created_at, status, promised_date, delivered_at, origin_city, destination_city, carriers(name)')
+      .select('shipment_id, created_at, status, carrier_id, origin_city, destination_city, carriers(name)')
       .order('created_at', { ascending: false })
-      .order('shipment_id', { ascending: false })
-      .limit(8),
+      .order('shipment_id', { ascending: false }),
   ])
   for (const r of [tenant, kpi, shipments]) if (r.error) throw r.error
   return { tenant: tenant.data, kpi: kpi.data, shipments: shipments.data }
