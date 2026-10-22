@@ -13,7 +13,7 @@ tables, and each one must see only its own data.
   on who is logged in. Postgres Row Level Security reads `tenant_id` from the login token (JWT).
 - **Operational dashboard:** late rate, cost per kg and transit time by carrier, with a period
   filter and carrier drill-down.
-- **One insight:** NorthLine is the cheapest road carrier, but it delivers about 40% of shipments late.
+- **One insight:** across all 40 customers, NorthLine is the cheapest road carrier, but it delivers about 40% of shipments late.
 
 ## Stack
 - Supabase (Postgres, Auth, Row Level Security)

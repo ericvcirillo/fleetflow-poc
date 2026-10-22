@@ -8,7 +8,7 @@ export const links = {
 export const why = [
   'I am applying for a Solutions Engineer role in embedded analytics. I could have listed courses. Instead I gave myself a technical test: run a proof of concept the way an SE would run one for a prospect, end to end, with a real database and a live demo.',
   'I am not trying to become a SQL specialist overnight. What I wanted to show is how I learn and how I deliver: I pick a real problem, use AI to move fast, and make sure I understand and can defend every number that comes out.',
-  'The rule I followed: for every query, I wrote it or explained it first. Only then did the AI correct me and explain the concept, always with an example from this case. The mistakes I made along the way are part of what I learned.',
+  'The rule I followed: for every query in the model, KPI and security steps, I wrote it or explained it first. Only then did the AI correct me and explain the concept, always with an example from this case. The mistakes I made along the way are part of what I learned.',
 ]
 
 export const pains = [
@@ -34,7 +34,7 @@ export const steps = [
   },
   {
     n: '02', t: 'Data',
-    did: 'Created six tables in Postgres on Supabase: tenants, subscriptions, users, carriers, shipments and dashboard views. 1,558 fictional shipments across 40 customers.',
+    did: 'Created six tables in Postgres on Supabase: tenants, subscriptions, users, carriers, shipments and dashboard_views (a usage log). 1,558 fictional shipments across 40 customers.',
     concept: 'Multi-tenant SaaS: every customer shares the same tables, separated by a tenant_id column.',
     call: 'Supabase, because it is real Postgres with authentication built in, free, and runs in the browser.',
   },
@@ -53,7 +53,7 @@ export const steps = [
   {
     n: '05', t: 'Security',
     did: 'Wrote Row Level Security policies that read the tenant from the login token, then tested them by impersonating customers inside a rolled-back transaction.',
-    concept: 'A view runs with its owner\'s rights by default and silently bypasses RLS. I saw the leak, then fixed it with security_invoker.',
+    concept: 'A view runs with its owner\'s rights by default, so a view owned by the admin silently bypasses RLS. I saw the leak, then fixed it with security_invoker.',
     call: 'Tenant stored in app_metadata, which only the server can change.',
   },
   {
@@ -108,7 +108,7 @@ export const decisions = [
   },
   {
     q: 'Isn\'t the API key in the browser a risk?',
-    a: 'It is a publishable key, meant to be public. It identifies the project; it does not grant access. RLS decides which rows each user gets.',
+    a: 'It is a publishable key, meant to be public. It only lets the browser talk to the API as an anonymous or signed-in user, and RLS decides which rows each of them gets. The secret key, which bypasses RLS, never leaves the server.',
   },
   {
     q: 'Why does the app view store sums instead of rates?',
@@ -117,8 +117,8 @@ export const decisions = [
 ]
 
 export const sisense = [
-  { here: 'Postgres Row Level Security, tenant from the login token', there: 'Data security rules driven by user attributes from SSO / JWT' },
-  { here: 'fact_shipments view, recalculated on every query', there: 'Live model (versus a pre-aggregated ElastiCube)' },
+  { here: 'Postgres Row Level Security, tenant from the login token', there: 'Data security (row-level rules per user or group), with users signed in through SSO / JWT' },
+  { here: 'fact_shipments view, recalculated on every query', there: 'Live model, which queries the database directly (an ElastiCube would import the data instead)' },
   { here: 'kpi_carrier_month: additive measures', there: 'Measures that re-aggregate correctly under any filter' },
   { here: 'React app calling the database through Supabase', there: 'Compose SDK components embedded in the customer\'s React app' },
 ]

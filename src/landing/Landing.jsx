@@ -167,7 +167,7 @@ export default function Landing() {
             <div className="lp-insight-row">
               <div className="lp-insight-text">
                 <p>
-                  NorthLine charges <strong>$0.93 per kg</strong>, less than the other road carriers ($1.03 and $1.24),
+                  Across all 40 customers, NorthLine charges <strong>$0.93 per kg</strong>, less than the other road carriers ($1.03 and $1.24),
                   but delivers <strong>40.1% of shipments late</strong>, against 8.9% to 12.6% for the others.
                 </p>
                 <p>In February 2026, the worst month, it caused 12 of the 25 late deliveries.</p>
