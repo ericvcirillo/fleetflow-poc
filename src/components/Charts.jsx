@@ -85,25 +85,14 @@ export function CarrierChart({ rows, selected, onSelect }) {
 // They share a syncId, so hovering one highlights the same month in both.
 export function TrendCharts({ rows }) {
   const narrow = useNarrow()
-  // The line is a 3-month rolling late rate: late deliveries over deliveries
-  // in the month and the two before it (SUM / SUM). Customers ship only a few
-  // loads a month, so a single month swings between 0% and 100% on one delivery.
-  const data = rows.map((m, i) => {
-    const window = rows.slice(Math.max(0, i - 2), i + 1)
-    const late = window.reduce((a, r) => a + r.late, 0)
-    const deliveries = window.reduce((a, r) => a + r.deliveries, 0)
-    return {
-      ...m,
-      rollLate: late,
-      rollDeliveries: deliveries,
-      rate: deliveries ? (100 * late) / deliveries : null,
-      count: m.deliveries || null,
-    }
-  })
-  // A point with empty windows on both sides has no line segment, so it gets a dot.
-  data.forEach((d, i) => {
-    d.lone = d.rate != null && data[i - 1]?.rate == null && data[i + 1]?.rate == null
-  })
+  const data = rows.map((m, i) => ({
+    ...m,
+    rate: m.deliveries ? m.latePct : null,
+    count: m.deliveries || null,
+    // A month with empty months on both sides: the line has no segment there,
+    // so it gets a small dot instead of disappearing.
+    lone: Boolean(m.deliveries) && !rows[i - 1]?.deliveries && !rows[i + 1]?.deliveries,
+  }))
   const maxRate = Math.max(0, ...data.map(d => d.rate ?? 0))
   const rateTop = maxRate <= 60 ? 60 : 100
   const rateTicks = rateTop === 60 ? [0, 15, 30, 45, 60] : [0, 25, 50, 75, 100]
@@ -117,7 +106,7 @@ export function TrendCharts({ rows }) {
 
   return (
     <div className="trend">
-      <div className="mini-title">Late rate, rolling 3 months</div>
+      <div className="mini-title">Late rate</div>
       <ResponsiveContainer width="100%" height={136}>
         <LineChart data={data} margin={margin} syncId="trend">
           <CartesianGrid vertical={false} stroke={GRID} />
@@ -130,12 +119,14 @@ export function TrendCharts({ rows }) {
                 render={m => (
                   <>
                     <strong>{fmt.month(m.month)}</strong>
-                    <span>{fmt.int(m.deliveries)} deliveries this month</span>
-                    {m.rollDeliveries ? (
-                      <span>
-                        Late rate, 3 months {fmt.pct(m.rate)} ({fmt.int(m.rollLate)} of {fmt.int(m.rollDeliveries)})
-                      </span>
-                    ) : null}
+                    {m.deliveries ? (
+                      <>
+                        <span>Late rate {fmt.pct(m.latePct)}</span>
+                        <span>{fmt.int(m.late)} late of {fmt.int(m.deliveries)}</span>
+                      </>
+                    ) : (
+                      <span>No deliveries</span>
+                    )}
                   </>
                 )}
               />
