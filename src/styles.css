@@ -99,6 +99,9 @@ button:disabled { cursor: progress; opacity: .7; }
 .sidebar nav { display: flex; flex-direction: column; gap: 2px; }
 .sidebar nav a { display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 8px; font-size: 14.5px;
   color: #bcd2d0; text-decoration: none; white-space: nowrap; }
+.sidebar nav .nav-off { display: flex; align-items: center; min-height: 40px; padding: 0 12px; font-size: 14.5px;
+  color: rgba(188,210,208,.5); white-space: nowrap; cursor: not-allowed; }
+.nav-note { margin: -14px 12px 0; font-size: 12px; line-height: 1.5; color: rgba(188,210,208,.75); }
 .sidebar nav a.active { background: rgba(255,255,255,.11); color: #fff; font-weight: 600; }
 .sidebar .nav-about, .signout-top { display: none; }
 .sidebar-back { border-top: 1px solid rgba(255,255,255,.12); padding: 16px 12px 0; color: #bcd2d0; font-size: 13.5px; text-decoration: none; }
@@ -224,6 +227,7 @@ tr.selected .strong { font-weight: 600; }
   .sidebar nav { flex-direction: row; overflow-x: auto; gap: 4px; margin: 0 -16px; padding: 0 16px 10px; scrollbar-width: none; }
   .sidebar nav a { min-height: 36px; font-size: 14px; }
   .sidebar .nav-about { display: flex; }
-  .sidebar-back, .sidebar-foot { display: none; }
+  .sidebar-back, .sidebar-foot, .nav-note { display: none; }
+  .sidebar nav .nav-off { min-height: 36px; font-size: 14px; }
   .head-actions .ghost-btn { display: none; }
 }

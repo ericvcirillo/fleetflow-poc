@@ -49,13 +49,18 @@ export default function Dashboard({ user, onSignOut }) {
           <button className="signout signout-top" onClick={onSignOut}>Sign out</button>
         </div>
         <nav aria-label="FleetFlow">
-          {NAV.map(n => (
-            <a key={n} className={n === 'Analytics' ? 'active' : ''} aria-current={n === 'Analytics' ? 'page' : undefined}>
-              {n}
-            </a>
-          ))}
+          {/* The other sections only set the scene: the analytics page is embedded
+              in a larger product. They are shown as unavailable, not as dead links. */}
+          {NAV.map(n =>
+            n === 'Analytics' ? (
+              <a key={n} className="active" aria-current="page">{n}</a>
+            ) : (
+              <span key={n} className="nav-off" aria-disabled="true" title="Not part of this demo">{n}</span>
+            )
+          )}
           <a className="nav-about" href="/">← About</a>
         </nav>
+        <p className="nav-note">This demo covers the Analytics page. The other sections show where it sits in the product.</p>
         <a className="sidebar-back" href="/">← About this project</a>
         <div className="sidebar-foot">
           <span className="sidebar-email">{user.email}</span>
