@@ -90,11 +90,12 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 .lp-shot-back .lp-shot-frame { box-shadow: 0 1px 2px rgba(17,19,18,.04), 0 12px 40px -12px rgba(17,19,18,.14); }
 .lp-shot-front .lp-shot-frame { box-shadow: 0 2px 4px rgba(17,19,18,.05), 0 30px 70px -20px rgba(17,19,18,.28); }
 
-.lp-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+.lp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); margin-top: clamp(48px, 6vw, 72px); }
-.lp-stats div { display: flex; flex-direction: column-reverse; padding: 22px 20px 22px 0; }
+.lp-stats div { display: flex; flex-direction: column-reverse; align-items: center; text-align: center; padding: 22px 8px; }
+.lp-stats div + div { border-left: 1px solid var(--line); }
 .lp-stats dt { font-family: var(--mono); font-size: 12px; color: var(--label); }
-.lp-stats dd { font-family: var(--display); font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.03em; line-height: 1.2; }
+.lp-stats dd { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.03em; line-height: 1.2; }
 .lp-stats dd span { color: var(--mute-2); font-weight: 500; font-size: 0.55em; letter-spacing: 0; }
 
 /* Sections */
