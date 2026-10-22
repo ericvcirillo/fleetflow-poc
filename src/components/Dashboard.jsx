@@ -126,7 +126,7 @@ export default function Dashboard({ user, onSignOut }) {
                 )}
               </div>
               <div className="card">
-                <CardHead title={`Monthly trend${carrierName ? ` · ${carrierName}` : ''}`} sub="The last month may be incomplete." />
+                <CardHead title={`Monthly trend${carrierName ? ` · ${carrierName}` : ''}`} sub="Late rate over each month and the two before it, so a quiet month does not swing it. The last month may be incomplete." />
                 {empty ? <Empty /> : <TrendCharts rows={view.months} />}
               </div>
             </section>
