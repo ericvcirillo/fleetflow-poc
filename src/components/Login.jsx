@@ -53,6 +53,7 @@ export default function Login({ onSignIn }) {
         {error && <p className="error">{error}</p>}
         {demoMode && <p className="muted small">Offline demo mode: data comes from a snapshot of the database.</p>}
       </form>
+      <a className="back-link" href="/">← About this project</a>
     </div>
   )
 }

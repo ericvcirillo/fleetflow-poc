@@ -4,7 +4,9 @@ A proof of concept for embedding customer-facing analytics in a multi-tenant Saa
 FleetFlow is a fictional shipment-management platform; its customers (tenants) share the same
 tables, and each one must see only its own data.
 
-> Work in progress. Fictional company and data. Built openly with AI assistance.
+> Live: https://fleetflow-poc.vercel.app (case study) · https://fleetflow-poc.vercel.app/demo (demo, password for the demo accounts: 123456)
+>
+> Fictional company and data. Built openly with AI assistance.
 
 ## What it shows
 - **Tenant isolation:** the same dashboard and the same queries return different data depending

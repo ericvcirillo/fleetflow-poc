@@ -38,6 +38,7 @@ export default function Dashboard({ user, onSignOut }) {
           <a className="active">Analytics</a>
           <a>Settings</a>
         </nav>
+        <a className="sidebar-back" href="/">← About this project</a>
         <div className="sidebar-foot">
           <div className="small">{user.email}</div>
           <button className="link" onClick={onSignOut}>Sign out</button>

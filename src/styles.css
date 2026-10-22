@@ -49,6 +49,11 @@ code { background: #eef1ee; padding: 1px 5px; border-radius: 4px; font-size: 13p
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 500; }
 input { font: inherit; padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; }
+.back-link { color: #d8e6e4; font-size: 14px; text-decoration: none; }
+.back-link:hover { color: #fff; }
+.login { flex-direction: column; gap: 18px; display: flex; align-items: center; justify-content: center; }
+.sidebar-back { color: #b9cfcc; font-size: 13px; text-decoration: none; padding: 0 10px; }
+.sidebar-back:hover { color: #fff; }
 .primary { background: var(--brand); color: #fff; border: 0; border-radius: 8px; padding: 10px; font-weight: 600; }
 
 /* Shell */
@@ -59,7 +64,7 @@ input { font: inherit; padding: 9px 11px; border: 1px solid var(--border); borde
 .sidebar nav a.active { background: rgba(255,255,255,.12); color: #fff; font-weight: 600; }
 .sidebar-foot { margin-top: auto; display: flex; flex-direction: column; gap: 4px; word-break: break-all; }
 .link { background: none; border: 0; color: #fff; padding: 0; text-align: left; text-decoration: underline; font-size: 13px; }
-main { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.shell main { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
 .tenant-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; padding: 6px 10px; border-radius: 999px;
   background: #e7f2ec; color: var(--good); font-weight: 500; }
@@ -100,7 +105,7 @@ tr.selected { background: var(--hover); font-weight: 600; }
   .sidebar nav { flex-direction: row; overflow-x: auto; }
   .sidebar-foot { margin: 0 0 0 auto; flex-direction: row; gap: 10px; align-items: center; }
   .sidebar-foot .small { display: none; }
-  main { padding: 16px; }
+  .shell main { padding: 16px; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid { grid-template-columns: 1fr; }
 }
