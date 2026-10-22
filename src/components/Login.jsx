@@ -22,6 +22,7 @@ export default function Login({ onSignIn }) {
 
   return (
     <div className="login">
+      <a className="back-top" href="/">← Back to the case study</a>
       <form className="login-card" onSubmit={submit}>
         <Logo />
         <h1>Sign in</h1>
@@ -53,7 +54,6 @@ export default function Login({ onSignIn }) {
         {error && <p className="error">{error}</p>}
         {demoMode && <p className="muted small">Offline demo mode: data comes from a snapshot of the database.</p>}
       </form>
-      <a className="back-link" href="/">← About this project</a>
     </div>
   )
 }

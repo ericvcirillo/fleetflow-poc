@@ -55,8 +55,12 @@ export default function Dashboard({ user, onSignOut }) {
               </p>
             )}
           </div>
-          <div className="tenant-badge" title="Row Level Security reads the tenant from the login token">
-            <span className="dot" /> tenant_id {user.tenantId} from login token
+          <div className="head-actions">
+            <div className="tenant-badge" title="Row Level Security reads the tenant from the login token">
+              <span className="dot" /> tenant_id {user.tenantId} from login token
+            </div>
+            <button className="switch-btn" onClick={onSignOut}>Switch customer</button>
+            <a className="switch-btn" href="/">← Case study</a>
           </div>
         </header>
 

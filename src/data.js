@@ -8,7 +8,9 @@ import tenant12 from './fixtures/t12.json'
 const url = import.meta.env.VITE_SUPABASE_URL
 const key = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-export const supabase = url && key ? createClient(url, key) : null
+// No persisted session: every visit to the demo starts at the login screen,
+// so visitors always pick a customer and see isolation from the start.
+export const supabase = url && key ? createClient(url, key, { auth: { persistSession: false } }) : null
 export const demoMode = !supabase
 
 export const DEMO_ACCOUNTS = [

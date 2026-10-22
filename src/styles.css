@@ -35,7 +35,7 @@ code { background: #eef1ee; padding: 1px 5px; border-radius: 4px; font-size: 13p
 .logo-light { color: #fff; --logo-ink: var(--brand); }
 
 /* Login */
-.login { min-height: 100vh; display: grid; place-items: center; padding: 16px;
+.login { position: relative; min-height: 100vh; display: grid; place-items: center; padding: 16px;
   background: linear-gradient(160deg, var(--brand) 0%, var(--brand-2) 100%); }
 .login-card { width: 100%; max-width: 400px; background: var(--card); border-radius: 14px; padding: 28px;
   display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
@@ -54,6 +54,13 @@ input { font: inherit; padding: 9px 11px; border: 1px solid var(--border); borde
 .login { flex-direction: column; gap: 18px; display: flex; align-items: center; justify-content: center; }
 .sidebar-back { color: #b9cfcc; font-size: 13px; text-decoration: none; padding: 0 10px; }
 .sidebar-back:hover { color: #fff; }
+.back-top { position: absolute; top: 20px; left: 24px; color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;
+  padding: 8px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 8px; }
+.back-top:hover { background: rgba(255,255,255,.1); }
+.head-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.switch-btn { font-size: 13px; font-weight: 500; color: var(--text-primary); background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; text-decoration: none; }
+.switch-btn:hover { border-color: var(--text-primary); }
 .primary { background: var(--brand); color: #fff; border: 0; border-radius: 8px; padding: 10px; font-weight: 600; }
 
 /* Shell */
